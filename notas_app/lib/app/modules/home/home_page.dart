@@ -22,6 +22,10 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
       body: Column(
         children: <Widget>[],
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {}, // todo implement create note function
+        child: Icon(Icons.add),
+      ),
     );
   }
 }

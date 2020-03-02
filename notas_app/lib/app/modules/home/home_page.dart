@@ -24,11 +24,13 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
         children: <Widget>[],
       ),
       bottomSheet: SolidBottomSheet(
-          headerBar: Icon(Icons.add),
-          body: Expanded(
-              child: Center(
+        headerBar: Icon(Icons.add),
+        body: Expanded(
+          child: Center(
             child: Text('Hello World'),
-          ))),
+          ),
+        ),
+      ),
     );
   }
 }

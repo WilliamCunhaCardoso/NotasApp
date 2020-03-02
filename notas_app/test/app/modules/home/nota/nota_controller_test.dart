@@ -1,9 +1,8 @@
 import 'package:flutter_modular/flutter_modular_test.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:flutter_modular/flutter_modular.dart';
 
-import 'package:notas_app/app/modules/home/nota/nota_controller.dart';
 import 'package:notas_app/app/modules/home/home_module.dart';
+import 'package:notas_app/app/modules/nota/nota_controller.dart';
 
 void main() {
   initModule(HomeModule());

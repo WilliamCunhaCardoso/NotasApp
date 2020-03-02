@@ -17,6 +17,7 @@ environment:
   sdk: ">=2.1.0 <3.0.0"
 
 dependencies:
+  moor_flutter: ^2.1.1
   solid_bottom_sheet: ^0.1.9
   dio: ^3.0.9
   flutter_mobx: ^1.0.1
@@ -29,6 +30,7 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
 
 dev_dependencies:
+  moor_generator: ^2.4.0
   mockito: ^4.1.1
   mobx_codegen: ^1.0.2
   build_runner: ^1.7.4

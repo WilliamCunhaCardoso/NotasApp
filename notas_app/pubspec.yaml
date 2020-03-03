@@ -14,10 +14,11 @@ description: &#x27;A new Flutter project. Created by Slidy&#x27;
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.1.0 <3.0.0"
+  sdk: ">=2.2.0 <3.0.0"
 
 dependencies:
   moor_flutter: ^2.1.1
+  moor: ^2.4.1
   solid_bottom_sheet: ^0.1.9
   dio: ^3.0.9
   flutter_mobx: ^1.0.1

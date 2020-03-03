@@ -7,17 +7,17 @@ part of 'mydatabase.dart';
 // **************************************************************************
 
 // ignore_for_file: unnecessary_brace_in_string_interps, unnecessary_this
-class NotaData extends DataClass implements Insertable<NotaData> {
+class Nota extends DataClass implements Insertable<Nota> {
   final int id;
   final String titulo;
   final String conteudo;
-  NotaData({@required this.id, @required this.titulo, @required this.conteudo});
-  factory NotaData.fromData(Map<String, dynamic> data, GeneratedDatabase db,
+  Nota({@required this.id, @required this.titulo, @required this.conteudo});
+  factory Nota.fromData(Map<String, dynamic> data, GeneratedDatabase db,
       {String prefix}) {
     final effectivePrefix = prefix ?? '';
     final intType = db.typeSystem.forDartType<int>();
     final stringType = db.typeSystem.forDartType<String>();
-    return NotaData(
+    return Nota(
       id: intType.mapFromDatabaseResponse(data['${effectivePrefix}id']),
       titulo:
           stringType.mapFromDatabaseResponse(data['${effectivePrefix}titulo']),
@@ -25,10 +25,10 @@ class NotaData extends DataClass implements Insertable<NotaData> {
           stringType.mapFromDatabaseResponse(data['${effectivePrefix}body']),
     );
   }
-  factory NotaData.fromJson(Map<String, dynamic> json,
+  factory Nota.fromJson(Map<String, dynamic> json,
       {ValueSerializer serializer}) {
     serializer ??= moorRuntimeOptions.defaultSerializer;
-    return NotaData(
+    return Nota(
       id: serializer.fromJson<int>(json['id']),
       titulo: serializer.fromJson<String>(json['titulo']),
       conteudo: serializer.fromJson<String>(json['conteudo']),
@@ -45,8 +45,8 @@ class NotaData extends DataClass implements Insertable<NotaData> {
   }
 
   @override
-  NotaCompanion createCompanion(bool nullToAbsent) {
-    return NotaCompanion(
+  NotasCompanion createCompanion(bool nullToAbsent) {
+    return NotasCompanion(
       id: id == null && nullToAbsent ? const Value.absent() : Value(id),
       titulo:
           titulo == null && nullToAbsent ? const Value.absent() : Value(titulo),
@@ -56,14 +56,14 @@ class NotaData extends DataClass implements Insertable<NotaData> {
     );
   }
 
-  NotaData copyWith({int id, String titulo, String conteudo}) => NotaData(
+  Nota copyWith({int id, String titulo, String conteudo}) => Nota(
         id: id ?? this.id,
         titulo: titulo ?? this.titulo,
         conteudo: conteudo ?? this.conteudo,
       );
   @override
   String toString() {
-    return (StringBuffer('NotaData(')
+    return (StringBuffer('Nota(')
           ..write('id: $id, ')
           ..write('titulo: $titulo, ')
           ..write('conteudo: $conteudo')
@@ -77,30 +77,30 @@ class NotaData extends DataClass implements Insertable<NotaData> {
   @override
   bool operator ==(dynamic other) =>
       identical(this, other) ||
-      (other is NotaData &&
+      (other is Nota &&
           other.id == this.id &&
           other.titulo == this.titulo &&
           other.conteudo == this.conteudo);
 }
 
-class NotaCompanion extends UpdateCompanion<NotaData> {
+class NotasCompanion extends UpdateCompanion<Nota> {
   final Value<int> id;
   final Value<String> titulo;
   final Value<String> conteudo;
-  const NotaCompanion({
+  const NotasCompanion({
     this.id = const Value.absent(),
     this.titulo = const Value.absent(),
     this.conteudo = const Value.absent(),
   });
-  NotaCompanion.insert({
+  NotasCompanion.insert({
     this.id = const Value.absent(),
     @required String titulo,
     @required String conteudo,
   })  : titulo = Value(titulo),
         conteudo = Value(conteudo);
-  NotaCompanion copyWith(
+  NotasCompanion copyWith(
       {Value<int> id, Value<String> titulo, Value<String> conteudo}) {
-    return NotaCompanion(
+    return NotasCompanion(
       id: id ?? this.id,
       titulo: titulo ?? this.titulo,
       conteudo: conteudo ?? this.conteudo,
@@ -108,10 +108,10 @@ class NotaCompanion extends UpdateCompanion<NotaData> {
   }
 }
 
-class $NotaTable extends Nota with TableInfo<$NotaTable, NotaData> {
+class $NotasTable extends Notas with TableInfo<$NotasTable, Nota> {
   final GeneratedDatabase _db;
   final String _alias;
-  $NotaTable(this._db, [this._alias]);
+  $NotasTable(this._db, [this._alias]);
   final VerificationMeta _idMeta = const VerificationMeta('id');
   GeneratedIntColumn _id;
   @override
@@ -145,13 +145,13 @@ class $NotaTable extends Nota with TableInfo<$NotaTable, NotaData> {
   @override
   List<GeneratedColumn> get $columns => [id, titulo, conteudo];
   @override
-  $NotaTable get asDslTable => this;
+  $NotasTable get asDslTable => this;
   @override
-  String get $tableName => _alias ?? 'nota';
+  String get $tableName => _alias ?? 'notas';
   @override
-  final String actualTableName = 'nota';
+  final String actualTableName = 'notas';
   @override
-  VerificationContext validateIntegrity(NotaCompanion d,
+  VerificationContext validateIntegrity(NotasCompanion d,
       {bool isInserting = false}) {
     final context = VerificationContext();
     if (d.id.present) {
@@ -175,13 +175,13 @@ class $NotaTable extends Nota with TableInfo<$NotaTable, NotaData> {
   @override
   Set<GeneratedColumn> get $primaryKey => {id};
   @override
-  NotaData map(Map<String, dynamic> data, {String tablePrefix}) {
+  Nota map(Map<String, dynamic> data, {String tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : null;
-    return NotaData.fromData(data, _db, prefix: effectivePrefix);
+    return Nota.fromData(data, _db, prefix: effectivePrefix);
   }
 
   @override
-  Map<String, Variable> entityToSql(NotaCompanion d) {
+  Map<String, Variable> entityToSql(NotasCompanion d) {
     final map = <String, Variable>{};
     if (d.id.present) {
       map['id'] = Variable<int, IntType>(d.id.value);
@@ -196,19 +196,19 @@ class $NotaTable extends Nota with TableInfo<$NotaTable, NotaData> {
   }
 
   @override
-  $NotaTable createAlias(String alias) {
-    return $NotaTable(_db, alias);
+  $NotasTable createAlias(String alias) {
+    return $NotasTable(_db, alias);
   }
 }
 
 abstract class _$MyDatabase extends GeneratedDatabase {
   _$MyDatabase(QueryExecutor e) : super(SqlTypeSystem.defaultInstance, e);
-  $NotaTable _nota;
-  $NotaTable get nota => _nota ??= $NotaTable(this);
+  $NotasTable _notas;
+  $NotasTable get notas => _notas ??= $NotasTable(this);
   NotaDAO _notaDAO;
   NotaDAO get notaDAO => _notaDAO ??= NotaDAO(this as MyDatabase);
   @override
   Iterable<TableInfo> get allTables => allSchemaEntities.whereType<TableInfo>();
   @override
-  List<DatabaseSchemaEntity> get allSchemaEntities => [nota];
+  List<DatabaseSchemaEntity> get allSchemaEntities => [notas];
 }

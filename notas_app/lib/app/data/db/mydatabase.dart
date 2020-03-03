@@ -4,7 +4,7 @@ import 'package:notas_app/app/data/model/nota_model.dart';
 
 part 'mydatabase.g.dart';
 
-@UseMoor(tables: [Nota], daos: [NotaDAO])
+@UseMoor(tables: [Notas], daos: [NotaDAO])
 class MyDatabase extends _$MyDatabase {
   // Singleton
   static MyDatabase instance = MyDatabase._internal();
@@ -12,9 +12,11 @@ class MyDatabase extends _$MyDatabase {
   // DAO
   NotaDAO notaDAO;
 
-  MyDatabase._internal() : super(FlutterQueryExecutor.inDatabaseFolder(path: 'db.sqlite', logStatements: true)) {
+  MyDatabase._internal()
+      : super(FlutterQueryExecutor.inDatabaseFolder(
+            path: 'db.sqlite', logStatements: true)) {
     notaDAO = NotaDAO(this);
-  } 
+  }
 
   @override
   int get schemaVersion => 1;

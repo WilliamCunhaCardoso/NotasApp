@@ -1,7 +1,12 @@
 import 'package:moor_flutter/moor_flutter.dart';
-import 'package:notas_app/app/data/dao/nota_dao.dart';
-import 'package:notas_app/app/data/model/nota_model.dart';
 
+// Dao
+import '../dao/nota_dao.dart';
+
+// Table
+import '../model/nota_model.dart';
+
+// Arquivo gerado automaticamente
 part 'mydatabase.g.dart';
 
 @UseMoor(tables: [Notas], daos: [NotaDAO])

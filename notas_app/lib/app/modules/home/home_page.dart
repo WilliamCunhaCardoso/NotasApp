@@ -21,12 +21,15 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
         title: Text(widget.title),
       ),
       body: Column(
-        children: <Widget>[],
+        children: <Widget>[
+          // todo: Lista vertical com as notas criadas
+        ],
       ),
       bottomSheet: SolidBottomSheet(
         headerBar: Icon(Icons.add),
         body: Expanded(
           child: Center(
+            // todo: pagina de criação de nota
             child: Text('Hello World'),
           ),
         ),

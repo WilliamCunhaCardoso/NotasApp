@@ -26,21 +26,21 @@ mixin _$NotaController on _NotaBase, Store {
     }, _$ultimaAlteracaoAtom, name: '${_$ultimaAlteracaoAtom.name}_set');
   }
 
-  final _$tituloAtom = Atom(name: '_NotaBase.titulo');
+  final _$tituloControllerAtom = Atom(name: '_NotaBase.tituloController');
 
   @override
-  String get titulo {
-    _$tituloAtom.context.enforceReadPolicy(_$tituloAtom);
-    _$tituloAtom.reportObserved();
-    return super.titulo;
+  TextEditingController get tituloController {
+    _$tituloControllerAtom.context.enforceReadPolicy(_$tituloControllerAtom);
+    _$tituloControllerAtom.reportObserved();
+    return super.tituloController;
   }
 
   @override
-  set titulo(String value) {
-    _$tituloAtom.context.conditionallyRunInAction(() {
-      super.titulo = value;
-      _$tituloAtom.reportChanged();
-    }, _$tituloAtom, name: '${_$tituloAtom.name}_set');
+  set tituloController(TextEditingController value) {
+    _$tituloControllerAtom.context.conditionallyRunInAction(() {
+      super.tituloController = value;
+      _$tituloControllerAtom.reportChanged();
+    }, _$tituloControllerAtom, name: '${_$tituloControllerAtom.name}_set');
   }
 
   final _$textoAtom = Atom(name: '_NotaBase.texto');
@@ -63,7 +63,7 @@ mixin _$NotaController on _NotaBase, Store {
   @override
   String toString() {
     final string =
-        'ultimaAlteracao: ${ultimaAlteracao.toString()},titulo: ${titulo.toString()},texto: ${texto.toString()}';
+        'ultimaAlteracao: ${ultimaAlteracao.toString()},tituloController: ${tituloController.toString()},texto: ${texto.toString()}';
     return '{$string}';
   }
 }

@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:mobx/mobx.dart';
 
 part 'nota_controller.g.dart';
@@ -8,7 +9,7 @@ abstract class _NotaBase with Store {
   @observable
   DateTime ultimaAlteracao = DateTime.now();
   @observable 
-  String titulo = 'Titulo';
+  TextEditingController tituloController = TextEditingController();
   @observable
   String texto = 'Texto';
 }

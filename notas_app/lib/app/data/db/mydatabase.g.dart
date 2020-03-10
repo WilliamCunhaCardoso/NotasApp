@@ -9,16 +9,24 @@ part of 'mydatabase.dart';
 // ignore_for_file: unnecessary_brace_in_string_interps, unnecessary_this
 class Nota extends DataClass implements Insertable<Nota> {
   final int id;
+  final DateTime ultimaAlteracao;
   final String titulo;
   final String conteudo;
-  Nota({@required this.id, @required this.titulo, @required this.conteudo});
+  Nota(
+      {@required this.id,
+      @required this.ultimaAlteracao,
+      @required this.titulo,
+      @required this.conteudo});
   factory Nota.fromData(Map<String, dynamic> data, GeneratedDatabase db,
       {String prefix}) {
     final effectivePrefix = prefix ?? '';
     final intType = db.typeSystem.forDartType<int>();
+    final dateTimeType = db.typeSystem.forDartType<DateTime>();
     final stringType = db.typeSystem.forDartType<String>();
     return Nota(
       id: intType.mapFromDatabaseResponse(data['${effectivePrefix}id']),
+      ultimaAlteracao: dateTimeType
+          .mapFromDatabaseResponse(data['${effectivePrefix}ultima_alteracao']),
       titulo:
           stringType.mapFromDatabaseResponse(data['${effectivePrefix}titulo']),
       conteudo:
@@ -30,6 +38,7 @@ class Nota extends DataClass implements Insertable<Nota> {
     serializer ??= moorRuntimeOptions.defaultSerializer;
     return Nota(
       id: serializer.fromJson<int>(json['id']),
+      ultimaAlteracao: serializer.fromJson<DateTime>(json['ultimaAlteracao']),
       titulo: serializer.fromJson<String>(json['titulo']),
       conteudo: serializer.fromJson<String>(json['conteudo']),
     );
@@ -39,6 +48,7 @@ class Nota extends DataClass implements Insertable<Nota> {
     serializer ??= moorRuntimeOptions.defaultSerializer;
     return <String, dynamic>{
       'id': serializer.toJson<int>(id),
+      'ultimaAlteracao': serializer.toJson<DateTime>(ultimaAlteracao),
       'titulo': serializer.toJson<String>(titulo),
       'conteudo': serializer.toJson<String>(conteudo),
     };
@@ -48,6 +58,9 @@ class Nota extends DataClass implements Insertable<Nota> {
   NotasCompanion createCompanion(bool nullToAbsent) {
     return NotasCompanion(
       id: id == null && nullToAbsent ? const Value.absent() : Value(id),
+      ultimaAlteracao: ultimaAlteracao == null && nullToAbsent
+          ? const Value.absent()
+          : Value(ultimaAlteracao),
       titulo:
           titulo == null && nullToAbsent ? const Value.absent() : Value(titulo),
       conteudo: conteudo == null && nullToAbsent
@@ -56,8 +69,11 @@ class Nota extends DataClass implements Insertable<Nota> {
     );
   }
 
-  Nota copyWith({int id, String titulo, String conteudo}) => Nota(
+  Nota copyWith(
+          {int id, DateTime ultimaAlteracao, String titulo, String conteudo}) =>
+      Nota(
         id: id ?? this.id,
+        ultimaAlteracao: ultimaAlteracao ?? this.ultimaAlteracao,
         titulo: titulo ?? this.titulo,
         conteudo: conteudo ?? this.conteudo,
       );
@@ -65,6 +81,7 @@ class Nota extends DataClass implements Insertable<Nota> {
   String toString() {
     return (StringBuffer('Nota(')
           ..write('id: $id, ')
+          ..write('ultimaAlteracao: $ultimaAlteracao, ')
           ..write('titulo: $titulo, ')
           ..write('conteudo: $conteudo')
           ..write(')'))
@@ -72,36 +89,47 @@ class Nota extends DataClass implements Insertable<Nota> {
   }
 
   @override
-  int get hashCode =>
-      $mrjf($mrjc(id.hashCode, $mrjc(titulo.hashCode, conteudo.hashCode)));
+  int get hashCode => $mrjf($mrjc(
+      id.hashCode,
+      $mrjc(ultimaAlteracao.hashCode,
+          $mrjc(titulo.hashCode, conteudo.hashCode))));
   @override
   bool operator ==(dynamic other) =>
       identical(this, other) ||
       (other is Nota &&
           other.id == this.id &&
+          other.ultimaAlteracao == this.ultimaAlteracao &&
           other.titulo == this.titulo &&
           other.conteudo == this.conteudo);
 }
 
 class NotasCompanion extends UpdateCompanion<Nota> {
   final Value<int> id;
+  final Value<DateTime> ultimaAlteracao;
   final Value<String> titulo;
   final Value<String> conteudo;
   const NotasCompanion({
     this.id = const Value.absent(),
+    this.ultimaAlteracao = const Value.absent(),
     this.titulo = const Value.absent(),
     this.conteudo = const Value.absent(),
   });
   NotasCompanion.insert({
     this.id = const Value.absent(),
+    @required DateTime ultimaAlteracao,
     @required String titulo,
     @required String conteudo,
-  })  : titulo = Value(titulo),
+  })  : ultimaAlteracao = Value(ultimaAlteracao),
+        titulo = Value(titulo),
         conteudo = Value(conteudo);
   NotasCompanion copyWith(
-      {Value<int> id, Value<String> titulo, Value<String> conteudo}) {
+      {Value<int> id,
+      Value<DateTime> ultimaAlteracao,
+      Value<String> titulo,
+      Value<String> conteudo}) {
     return NotasCompanion(
       id: id ?? this.id,
+      ultimaAlteracao: ultimaAlteracao ?? this.ultimaAlteracao,
       titulo: titulo ?? this.titulo,
       conteudo: conteudo ?? this.conteudo,
     );
@@ -119,6 +147,20 @@ class $NotasTable extends Notas with TableInfo<$NotasTable, Nota> {
   GeneratedIntColumn _constructId() {
     return GeneratedIntColumn('id', $tableName, false,
         hasAutoIncrement: true, declaredAsPrimaryKey: true);
+  }
+
+  final VerificationMeta _ultimaAlteracaoMeta =
+      const VerificationMeta('ultimaAlteracao');
+  GeneratedDateTimeColumn _ultimaAlteracao;
+  @override
+  GeneratedDateTimeColumn get ultimaAlteracao =>
+      _ultimaAlteracao ??= _constructUltimaAlteracao();
+  GeneratedDateTimeColumn _constructUltimaAlteracao() {
+    return GeneratedDateTimeColumn(
+      'ultima_alteracao',
+      $tableName,
+      false,
+    );
   }
 
   final VerificationMeta _tituloMeta = const VerificationMeta('titulo');
@@ -143,7 +185,7 @@ class $NotasTable extends Notas with TableInfo<$NotasTable, Nota> {
   }
 
   @override
-  List<GeneratedColumn> get $columns => [id, titulo, conteudo];
+  List<GeneratedColumn> get $columns => [id, ultimaAlteracao, titulo, conteudo];
   @override
   $NotasTable get asDslTable => this;
   @override
@@ -156,6 +198,14 @@ class $NotasTable extends Notas with TableInfo<$NotasTable, Nota> {
     final context = VerificationContext();
     if (d.id.present) {
       context.handle(_idMeta, id.isAcceptableValue(d.id.value, _idMeta));
+    }
+    if (d.ultimaAlteracao.present) {
+      context.handle(
+          _ultimaAlteracaoMeta,
+          ultimaAlteracao.isAcceptableValue(
+              d.ultimaAlteracao.value, _ultimaAlteracaoMeta));
+    } else if (isInserting) {
+      context.missing(_ultimaAlteracaoMeta);
     }
     if (d.titulo.present) {
       context.handle(
@@ -185,6 +235,10 @@ class $NotasTable extends Notas with TableInfo<$NotasTable, Nota> {
     final map = <String, Variable>{};
     if (d.id.present) {
       map['id'] = Variable<int, IntType>(d.id.value);
+    }
+    if (d.ultimaAlteracao.present) {
+      map['ultima_alteracao'] =
+          Variable<DateTime, DateTimeType>(d.ultimaAlteracao.value);
     }
     if (d.titulo.present) {
       map['titulo'] = Variable<String, StringType>(d.titulo.value);

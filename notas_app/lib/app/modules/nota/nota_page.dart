@@ -26,44 +26,40 @@ class _NotaPageState extends State<NotaPage> {
       builder: (BuildContext context) => Form(
         key: formKey,
         child: Scaffold(
-          appBar: AppBar(
-            actions: <Widget>[
-              FlatButton(
-                child: Text('Salvar'),
-                onPressed: () {
-                  if (formKey.currentState.validate()) {
-                    print('submetido '+notaController.tituloController.text);
-                  }
-                },
-                // onPressed: () =>
-                // db.notaDAO.addNota(
-                //   Nota(
-                //     conteudo: notaController.texto,
-                //     id: null,
-                //     titulo: notaController.tituloController.text,
-                //     ultimaAlteracao: notaController.ultimaAlteracao,
-                //   ),
-                // ),
-              )
+          body: Column(
+            children: <Widget>[
+              AppBar(
+                actions: <Widget>[
+                  FlatButton(
+                    child: Text('Salvar'),
+                    onPressed: () {
+                      if (formKey.currentState.validate()) {
+                        print('submetido ' +
+                            notaController.tituloController.text);
+                      }
+                    },
+                    // onPressed: () =>
+                    // db.notaDAO.addNota(
+                    //   Nota(
+                    //     conteudo: notaController.texto,
+                    //     id: null,
+                    //     titulo: notaController.tituloController.text,
+                    //     ultimaAlteracao: notaController.ultimaAlteracao,
+                    //   ),
+                    // ),
+                  )
+                ],
+              ),
+              //* Body
             ],
           ),
-          body: Container(
-            child: TextFormField(
-              controller: notaController.tituloController,
-              style: titleStyle,
-              decoration: titleDecoration,
-              validator: (value) {
-                if (value.isEmpty) {
-                  return 'Please enter some text';
-                }
-                return null;
-              },
-              onFieldSubmitted: (value) => notaController.tituloController.text = value,
-            ), // todo: implement body text note
-          ),
-          bottomSheet: Text(
-            notaController.ultimaAlteracao.toString(),
-            style: dataStyle,
+          bottomSheet: Container(
+            width: MediaQuery.of(context).size.width,
+            child: Text(
+              notaController.ultimaAlteracao.toString(),
+              style: dataStyle,
+              textAlign: TextAlign.center,
+            ),
           ),
         ),
       ),

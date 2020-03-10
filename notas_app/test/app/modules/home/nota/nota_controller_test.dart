@@ -17,10 +17,6 @@ void main() {
       expect(nota, isInstanceOf<NotaController>());
     });
 
-    test("Set Value", () {
-      expect(nota.value, equals(0));
-      nota.increment();
-      expect(nota.value, equals(1));
-    });
+ 
   });
 }

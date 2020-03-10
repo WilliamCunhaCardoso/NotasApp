@@ -25,18 +25,24 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
           stream: db.notaDAO.listarTodos(),
           builder: (context, snapshot) {
             List<Nota> nota = snapshot.data;
-            if (!snapshot.hasData) return Container(child: Text('Sem notas!! Adicione uma xD'),);
+            if (!snapshot.hasData)
+              return Container(
+                child: Text('Sem notas!! Adicione uma xD'),
+              );
             return ListView.builder(
+              padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 8),
               itemCount: nota.length,
-              itemBuilder: (context, index) => ListTile(
-                title: Text(nota[index].titulo),
+              itemBuilder: (context, index) => Card(
+                elevation: 4,
+                child: ListTile(
+                  title: Text(nota[index].titulo),
+                ),
               ),
             );
           }),
       floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add),
-        onPressed: () => Modular.to.pushNamed('/nota'), // todo implement push named
-      ),
+          child: Icon(Icons.add),
+          onPressed: () => Modular.to.pushNamed('/nota')),
     );
   }
 }

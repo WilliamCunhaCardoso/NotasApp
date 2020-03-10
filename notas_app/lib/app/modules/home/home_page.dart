@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:notas_app/app/data/db/mydatabase.dart';
 import 'home_controller.dart';
 
 class HomePage extends StatefulWidget {
@@ -12,6 +13,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends ModularState<HomePage, HomeController> {
   //use 'controller' variable to access controller
+  var db = MyDatabase.instance;
 
   @override
   Widget build(BuildContext context) {
@@ -19,14 +21,21 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body: Column(
-        children: <Widget>[
-          // todo: Lista vertical com as notas criadas
-        ],
-      ),
+      body: StreamBuilder<List<Nota>>(
+          stream: db.notaDAO.listarTodos(),
+          builder: (context, snapshot) {
+            List<Nota> nota = snapshot.data;
+            if (!snapshot.hasData) return Container(child: Text('Sem notas!! Adicione uma xD'),);
+            return ListView.builder(
+              itemCount: nota.length,
+              itemBuilder: (context, index) => ListTile(
+                title: Text(nota[index].titulo),
+              ),
+            );
+          }),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
-        onPressed: () => Modular.to.pushNamed(''), // todo implement push named
+        onPressed: () => Modular.to.pushNamed('/nota'), // todo implement push named
       ),
     );
   }

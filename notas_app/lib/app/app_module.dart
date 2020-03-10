@@ -4,15 +4,20 @@ import 'package:flutter/material.dart';
 import 'package:notas_app/app/app_widget.dart';
 import 'package:notas_app/app/modules/home/home_module.dart';
 
+import 'modules/nota/nota_controller.dart';
+import 'modules/nota/nota_module.dart';
+
 class AppModule extends MainModule {
   @override
   List<Bind> get binds => [
         Bind((i) => AppController()),
+        Bind((i) => NotaController()),
       ];
 
   @override
   List<Router> get routers => [
         Router('/', module: HomeModule()),
+        Router('/nota', module: NotaModule()),
       ];
 
   @override

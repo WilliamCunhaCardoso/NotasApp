@@ -6,10 +6,9 @@ class NotaController = _NotaBase with _$NotaController;
 
 abstract class _NotaBase with Store {
   @observable
-  int value = 0;
-
-  @action
-  void increment() {
-    value++;
-  }
+  DateTime ultimaAlteracao = DateTime.now();
+  @observable 
+  String titulo = 'Titulo';
+  @observable
+  String texto = 'Texto';
 }

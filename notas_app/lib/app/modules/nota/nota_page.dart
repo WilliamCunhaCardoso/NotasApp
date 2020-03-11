@@ -19,9 +19,10 @@ class _NotaPageState extends State<NotaPage> {
   var notaController = Modular.get<NotaController>();
   var db = MyDatabase.instance;
   var formKey = GlobalKey<FormState>();
-
+  
   @override
   Widget build(BuildContext context) {
+    // notaController.getUltimaAlteracao;
     return Observer(
       builder: (BuildContext context) => Form(
         key: formKey,
@@ -50,13 +51,13 @@ class _NotaPageState extends State<NotaPage> {
                   )
                 ],
               ),
-              //* Body
+              TextFormField(style: bodyStyle, decoration: bodyDecoration,),
             ],
           ),
           bottomSheet: Container(
             width: MediaQuery.of(context).size.width,
             child: Text(
-              notaController.ultimaAlteracao.toString(),
+              notaController.formattedDate,
               style: dataStyle,
               textAlign: TextAlign.center,
             ),

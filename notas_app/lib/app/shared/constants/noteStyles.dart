@@ -16,6 +16,10 @@ var bodyStyle = TextStyle(
   fontSize: 14,
 );
 
+var bodyDecoration = InputDecoration(
+  hintText: 'Digite o título',
+);
+
 var dataStyle = TextStyle(
   color: Colors.black,
   fontWeight: FontWeight.w200,

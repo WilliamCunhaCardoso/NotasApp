@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:notas_app/app/data/db/mydatabase.dart';
+import 'package:notas_app/app/shared/constants/functions/open-card.dart';
 import 'home_controller.dart';
 
 class HomePage extends StatefulWidget {
@@ -19,7 +20,11 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[Text('FluNote '), Icon(Icons.border_color)],
+        ),
+        centerTitle: true,
       ),
       body: StreamBuilder<List<Nota>>(
           stream: db.notaDAO.listarTodos(),
@@ -30,12 +35,23 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
                 child: Text('Sem notas!! Adicione uma xD'),
               );
             return ListView.builder(
+              //todo implement: open note
               padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 8),
               itemCount: nota.length,
-              itemBuilder: (context, index) => Card(
-                elevation: 4,
-                child: ListTile(
-                  title: Text(nota[index].titulo),
+              itemBuilder: (context, index) => GestureDetector(
+                onTap: () {
+                  Modular.to.pushNamed('/open', arguments: nota[index]);
+                  // Navigator.push(
+                  //     context,
+                  //     MaterialPageRoute(
+                  //         builder: (_) => OpenNote(nota: nota[index])));
+                  print('Card pressionado');
+                }, //* Test for implementing open note
+                child: Card(
+                  elevation: 4,
+                  child: ListTile(
+                    title: Text(nota[index].titulo),
+                  ),
                 ),
               ),
             );

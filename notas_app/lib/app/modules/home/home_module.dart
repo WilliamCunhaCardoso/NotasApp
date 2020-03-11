@@ -1,3 +1,4 @@
+import 'package:notas_app/app/data/model/nota_model.dart';
 import 'package:notas_app/app/modules/home/home_controller.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:notas_app/app/modules/home/home_page.dart';
@@ -14,7 +15,7 @@ class HomeModule extends ChildModule {
   @override
   List<Router> get routers => [
         Router('/', child: (_, args) => HomePage()),
-        Router('/nota/', child: (_, args) => OpenNote(nota: args.params[args.data])),
+        Router('/open', child: (_, args) => OpenNote(nota: args.data)),
       ];
 
   static Inject get to => Inject<HomeModule>.of();

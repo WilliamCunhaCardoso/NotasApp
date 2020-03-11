@@ -35,18 +35,10 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
                 child: Text('Sem notas!! Adicione uma xD'),
               );
             return ListView.builder(
-              //todo implement: open note
               padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 8),
               itemCount: nota.length,
               itemBuilder: (context, index) => GestureDetector(
-                onTap: () {
-                  Modular.to.pushNamed('/open', arguments: nota[index]);
-                  // Navigator.push(
-                  //     context,
-                  //     MaterialPageRoute(
-                  //         builder: (_) => OpenNote(nota: nota[index])));
-                  print('Card pressionado');
-                }, //* Test for implementing open note
+                onTap: () => Modular.to.pushNamed('/open', arguments: nota[index]),
                 child: Card(
                   elevation: 4,
                   child: ListTile(

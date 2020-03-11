@@ -19,26 +19,58 @@ class _NotaPageState extends State<NotaPage> {
   var notaController = Modular.get<NotaController>();
   var db = MyDatabase.instance;
   var formKey = GlobalKey<FormState>();
-  
+
   @override
   Widget build(BuildContext context) {
-    // notaController.getUltimaAlteracao;
     return Observer(
-      builder: (BuildContext context) => Form(
+      builder: (_) => Form(
         key: formKey,
         child: Scaffold(
-          body: Column(
-            children: <Widget>[
-              AppBar(
-                actions: <Widget>[
+          appBar: AppBar(
+            //! apenas título e botão voltar
+            title: TextField(
+              style: titleStyle,
+              decoration: titleDecoration,
+            ),
+          ),
+          body: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Column(
+              children: <Widget>[
+                Expanded(
+                  flex: 1,
+                  child: TextFormField(
+                    style: bodyStyle,
+                    decoration: bodyDecoration,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          bottomSheet: Observer(
+            builder: (_) => BottomAppBar(
+              // * botao ADD + Data ultiam edit ao centro + botao salvar ao final
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
                   FlatButton(
-                    child: Text('Salvar'),
-                    onPressed: () {
-                      if (formKey.currentState.validate()) {
-                        print('submetido ' +
-                            notaController.tituloController.text);
-                      }
-                    },
+                    //todo implement adicionar: lista, link, etc..
+                    child: Icon(Icons.add),
+                    onPressed: () {},
+                  ),
+                  Expanded(
+                    //! Data não está atualizando
+                    flex: 1,
+                    child: Text(
+                      notaController.formattedDate,
+                      style: dataStyle,
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                  FlatButton(
+                    //todo implement salvar nota
+                    child: Icon(Icons.check),
+                    onPressed: () {},
                     // onPressed: () =>
                     // db.notaDAO.addNota(
                     //   Nota(
@@ -48,18 +80,9 @@ class _NotaPageState extends State<NotaPage> {
                     //     ultimaAlteracao: notaController.ultimaAlteracao,
                     //   ),
                     // ),
-                  )
+                  ),
                 ],
               ),
-              TextFormField(style: bodyStyle, decoration: bodyDecoration,),
-            ],
-          ),
-          bottomSheet: Container(
-            width: MediaQuery.of(context).size.width,
-            child: Text(
-              notaController.formattedDate,
-              style: dataStyle,
-              textAlign: TextAlign.center,
             ),
           ),
         ),

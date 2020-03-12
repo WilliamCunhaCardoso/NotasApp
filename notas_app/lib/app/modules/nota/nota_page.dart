@@ -63,7 +63,6 @@ class _NotaPageState extends State<NotaPage> {
                     onPressed: () {},
                   ),
                   Expanded(
-                    //! Data não está atualizando
                     flex: 1,
                     child: Text(
                       notaController.formattedDate,

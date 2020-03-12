@@ -17,13 +17,11 @@ abstract class _NotaBase with Store {
   DateTime ultimaAlteracao = DateTime.now();
   @observable
   String texto;
-  @observable
-  String formattedDate='Nula';
-
+  
   @action
   void setUltimaAlteracao(DateTime value) => ultimaAlteracao = value;
 
   @computed
-  String get getUltimaAlteracao =>
-      formattedDate = DateFormat('dd-MM-yyyy – kk:mm').format(ultimaAlteracao);
+  String get formattedDate =>
+      DateFormat('dd-MM-yyyy – kk:mm').format(ultimaAlteracao);
 }

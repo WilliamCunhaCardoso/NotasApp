@@ -9,12 +9,12 @@ part of 'nota_controller.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
 mixin _$NotaController on _NotaBase, Store {
-  Computed<String> _$getUltimaAlteracaoComputed;
+  Computed<String> _$formattedDateComputed;
 
   @override
-  String get getUltimaAlteracao => (_$getUltimaAlteracaoComputed ??=
-          Computed<String>(() => super.getUltimaAlteracao))
-      .value;
+  String get formattedDate =>
+      (_$formattedDateComputed ??= Computed<String>(() => super.formattedDate))
+          .value;
 
   final _$tituloControllerAtom = Atom(name: '_NotaBase.tituloController');
 
@@ -85,23 +85,6 @@ mixin _$NotaController on _NotaBase, Store {
     }, _$textoAtom, name: '${_$textoAtom.name}_set');
   }
 
-  final _$formattedDateAtom = Atom(name: '_NotaBase.formattedDate');
-
-  @override
-  String get formattedDate {
-    _$formattedDateAtom.context.enforceReadPolicy(_$formattedDateAtom);
-    _$formattedDateAtom.reportObserved();
-    return super.formattedDate;
-  }
-
-  @override
-  set formattedDate(String value) {
-    _$formattedDateAtom.context.conditionallyRunInAction(() {
-      super.formattedDate = value;
-      _$formattedDateAtom.reportChanged();
-    }, _$formattedDateAtom, name: '${_$formattedDateAtom.name}_set');
-  }
-
   final _$_NotaBaseActionController = ActionController(name: '_NotaBase');
 
   @override
@@ -117,7 +100,7 @@ mixin _$NotaController on _NotaBase, Store {
   @override
   String toString() {
     final string =
-        'tituloController: ${tituloController.toString()},conteudoController: ${conteudoController.toString()},ultimaAlteracao: ${ultimaAlteracao.toString()},texto: ${texto.toString()},formattedDate: ${formattedDate.toString()},getUltimaAlteracao: ${getUltimaAlteracao.toString()}';
+        'tituloController: ${tituloController.toString()},conteudoController: ${conteudoController.toString()},ultimaAlteracao: ${ultimaAlteracao.toString()},texto: ${texto.toString()},formattedDate: ${formattedDate.toString()}';
     return '{$string}';
   }
 }

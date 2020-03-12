@@ -3,7 +3,6 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:notas_app/app/data/db/mydatabase.dart';
 import 'package:notas_app/app/shared/constants/homeConstants.dart';
-import 'package:notas_app/app/shared/constants/noteStyles.dart';
 import 'home_controller.dart';
 
 class HomePage extends StatefulWidget {

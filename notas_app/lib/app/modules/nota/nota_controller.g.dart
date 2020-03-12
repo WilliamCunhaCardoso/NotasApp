@@ -16,23 +16,6 @@ mixin _$NotaController on _NotaBase, Store {
           Computed<String>(() => super.getUltimaAlteracao))
       .value;
 
-  final _$ultimaAlteracaoAtom = Atom(name: '_NotaBase.ultimaAlteracao');
-
-  @override
-  DateTime get ultimaAlteracao {
-    _$ultimaAlteracaoAtom.context.enforceReadPolicy(_$ultimaAlteracaoAtom);
-    _$ultimaAlteracaoAtom.reportObserved();
-    return super.ultimaAlteracao;
-  }
-
-  @override
-  set ultimaAlteracao(DateTime value) {
-    _$ultimaAlteracaoAtom.context.conditionallyRunInAction(() {
-      super.ultimaAlteracao = value;
-      _$ultimaAlteracaoAtom.reportChanged();
-    }, _$ultimaAlteracaoAtom, name: '${_$ultimaAlteracaoAtom.name}_set');
-  }
-
   final _$tituloControllerAtom = Atom(name: '_NotaBase.tituloController');
 
   @override
@@ -48,6 +31,41 @@ mixin _$NotaController on _NotaBase, Store {
       super.tituloController = value;
       _$tituloControllerAtom.reportChanged();
     }, _$tituloControllerAtom, name: '${_$tituloControllerAtom.name}_set');
+  }
+
+  final _$conteudoControllerAtom = Atom(name: '_NotaBase.conteudoController');
+
+  @override
+  TextEditingController get conteudoController {
+    _$conteudoControllerAtom.context
+        .enforceReadPolicy(_$conteudoControllerAtom);
+    _$conteudoControllerAtom.reportObserved();
+    return super.conteudoController;
+  }
+
+  @override
+  set conteudoController(TextEditingController value) {
+    _$conteudoControllerAtom.context.conditionallyRunInAction(() {
+      super.conteudoController = value;
+      _$conteudoControllerAtom.reportChanged();
+    }, _$conteudoControllerAtom, name: '${_$conteudoControllerAtom.name}_set');
+  }
+
+  final _$ultimaAlteracaoAtom = Atom(name: '_NotaBase.ultimaAlteracao');
+
+  @override
+  DateTime get ultimaAlteracao {
+    _$ultimaAlteracaoAtom.context.enforceReadPolicy(_$ultimaAlteracaoAtom);
+    _$ultimaAlteracaoAtom.reportObserved();
+    return super.ultimaAlteracao;
+  }
+
+  @override
+  set ultimaAlteracao(DateTime value) {
+    _$ultimaAlteracaoAtom.context.conditionallyRunInAction(() {
+      super.ultimaAlteracao = value;
+      _$ultimaAlteracaoAtom.reportChanged();
+    }, _$ultimaAlteracaoAtom, name: '${_$ultimaAlteracaoAtom.name}_set');
   }
 
   final _$textoAtom = Atom(name: '_NotaBase.texto');
@@ -99,7 +117,7 @@ mixin _$NotaController on _NotaBase, Store {
   @override
   String toString() {
     final string =
-        'ultimaAlteracao: ${ultimaAlteracao.toString()},tituloController: ${tituloController.toString()},texto: ${texto.toString()},formattedDate: ${formattedDate.toString()},getUltimaAlteracao: ${getUltimaAlteracao.toString()}';
+        'tituloController: ${tituloController.toString()},conteudoController: ${conteudoController.toString()},ultimaAlteracao: ${ultimaAlteracao.toString()},texto: ${texto.toString()},formattedDate: ${formattedDate.toString()},getUltimaAlteracao: ${getUltimaAlteracao.toString()}';
     return '{$string}';
   }
 }

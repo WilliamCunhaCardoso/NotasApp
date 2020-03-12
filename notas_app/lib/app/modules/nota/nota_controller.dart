@@ -7,12 +7,16 @@ part 'nota_controller.g.dart';
 class NotaController = _NotaBase with _$NotaController;
 
 abstract class _NotaBase with Store {
-  @observable
-  DateTime ultimaAlteracao = DateTime.now();
+  //* TxtFld Controllers
   @observable
   TextEditingController tituloController = TextEditingController();
   @observable
-  String texto = 'Texto';
+  TextEditingController conteudoController = TextEditingController();
+  //* Variáveis
+  @observable
+  DateTime ultimaAlteracao = DateTime.now();
+  @observable
+  String texto;
   @observable
   String formattedDate='Nula';
 

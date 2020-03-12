@@ -28,9 +28,11 @@ class _NotaPageState extends State<NotaPage> {
         child: Scaffold(
           appBar: AppBar(
             title: TextField(
+              controller: notaController.tituloController,
               style: titleStyle,
               decoration: titleDecoration,
-              onChanged: (_) => notaController.setUltimaAlteracao(DateTime.now()),
+              onChanged: (_) =>
+                  notaController.setUltimaAlteracao(DateTime.now()),
             ),
           ),
           body: Padding(
@@ -40,9 +42,11 @@ class _NotaPageState extends State<NotaPage> {
                 Expanded(
                   flex: 1,
                   child: TextFormField(
+                    controller: notaController.conteudoController,
                     style: bodyStyle,
                     decoration: bodyDecoration,
-                    onChanged: (_) => notaController.setUltimaAlteracao(DateTime.now()),
+                    onChanged: (_) =>
+                        notaController.setUltimaAlteracao(DateTime.now()),
                   ),
                 ),
               ],
@@ -68,18 +72,20 @@ class _NotaPageState extends State<NotaPage> {
                     ),
                   ),
                   FlatButton(
-                    //todo implement salvar nota
                     child: Icon(Icons.check),
-                    onPressed: () {},
-                    // onPressed: () =>
-                    // db.notaDAO.addNota(
-                    //   Nota(
-                    //     conteudo: notaController.texto,
-                    //     id: null,
-                    //     titulo: notaController.tituloController.text,
-                    //     ultimaAlteracao: notaController.ultimaAlteracao,
-                    //   ),
-                    // ),
+                    onPressed: () {
+                      db.notaDAO.addNota(
+                        Nota(
+                          conteudo: notaController.conteudoController.text,
+                          id: null,
+                          titulo: notaController.tituloController.text,
+                          ultimaAlteracao: notaController.ultimaAlteracao,
+                        ),
+                      );
+                      notaController.tituloController.text = '';
+                      notaController.conteudoController.text = '';                      
+                      Modular.to.pushReplacementNamed('/');
+                    },
                   ),
                 ],
               ),

@@ -31,6 +31,7 @@ class _NotaPageState extends State<NotaPage> {
             title: TextField(
               style: titleStyle,
               decoration: titleDecoration,
+              onChanged: (_) => notaController.setUltimaAlteracao(DateTime.now()),
             ),
           ),
           body: Padding(
@@ -42,6 +43,7 @@ class _NotaPageState extends State<NotaPage> {
                   child: TextFormField(
                     style: bodyStyle,
                     decoration: bodyDecoration,
+                    onChanged: (_) => notaController.setUltimaAlteracao(DateTime.now()),
                   ),
                 ),
               ],

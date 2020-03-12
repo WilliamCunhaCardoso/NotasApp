@@ -1,9 +1,8 @@
-import 'package:notas_app/app/data/model/nota_model.dart';
 import 'package:notas_app/app/modules/home/home_controller.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:notas_app/app/modules/home/home_page.dart';
 import 'package:notas_app/app/modules/nota/nota_controller.dart';
-import 'package:notas_app/app/shared/constants/functions/open-card.dart';
+import 'package:notas_app/app/shared/functions/open-card.dart';
 
 class HomeModule extends ChildModule {
   @override

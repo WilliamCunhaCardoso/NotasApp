@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:notas_app/app/data/db/mydatabase.dart';
-import 'package:notas_app/app/shared/constants/functions/open-card.dart';
 import 'home_controller.dart';
 
 class HomePage extends StatefulWidget {

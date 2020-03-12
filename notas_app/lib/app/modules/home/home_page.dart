@@ -62,8 +62,10 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
             );
           }),
       floatingActionButton: FloatingActionButton(
-          child: Icon(Icons.add),
-          onPressed: () => Modular.to.pushNamed('/nota')),
+        tooltip: 'Menu de ações',
+        child: Icon(Icons.add),
+        onPressed: () => Modular.to.pushNamed('/nota'),
+      ),
     );
   }
 }

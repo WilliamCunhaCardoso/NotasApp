@@ -71,17 +71,17 @@ flutter:
   fonts:
     - family: Montserrat
       fonts:
-        - asset: assets/fonts/Montserrat-Regular.ttf
-        - asset: assets/fonts/Montserrat-Medium.ttf
+        - asset: assets/fonts/Montserrat/Montserrat-Regular.ttf
+        - asset: assets/fonts/Montserrat/Montserrat-Medium.ttf
     - family: Open Sans
       fonts:
-        - asset: assets/fonts/Open_Sans-Light.ttf
+        - asset: assets/fonts/Open_Sans/OpenSans-Light.ttf
           weight: 300
-        - asset: assets/fonts/Open_Sans-LightItalic.ttf
+        - asset: assets/fonts/Open_Sans/OpenSans-LightItalic.ttf
           weight: 300
           style: italic
-        - asset: assets/fonts/Open_Sans-Regular.ttf
-        - asset: assets/fonts/Open_Sans-Bold.ttf
+        - asset: assets/fonts/Open_Sans/OpenSans-Regular.ttf
+        - asset: assets/fonts/Open_Sans/OpenSans-Bold.ttf
           weight: 700
   #
   # For details regarding fonts from package dependencies,

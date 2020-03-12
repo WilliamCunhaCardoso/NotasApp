@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:notas_app/app/data/db/mydatabase.dart';
+import 'package:notas_app/app/shared/constants/homeConstants.dart';
+import 'package:notas_app/app/shared/constants/noteStyles.dart';
 import 'home_controller.dart';
 
 class HomePage extends StatefulWidget {
@@ -20,7 +22,7 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('FluNote'),
+        title: Text('FluNote', style: appBarStyle,),
         centerTitle: true,
         actions: <Widget>[
           FlatButton(
@@ -47,8 +49,8 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
                   elevation: 4,
                   child: Observer(
                     builder: (_) => ListTile(
-                      title: Text(nota[index].titulo),
-                      subtitle: Text(nota[index].conteudo),
+                      title: Text(nota[index].titulo, style: listTileTitle,),
+                      subtitle: Text(nota[index].conteudo, style: listTileSubtitle,),
                       trailing: homeController.editMode
                           ? FlatButton(
                               onPressed: () => db.notaDAO.rmNota(nota[index]),

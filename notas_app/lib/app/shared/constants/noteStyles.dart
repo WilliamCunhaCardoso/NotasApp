@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 var titleStyle = TextStyle(
   color: Colors.black,
-  // fontFamily: 'Montserrat',
+  fontFamily: 'Montserrat',
   fontWeight: FontWeight.w700,
   fontSize: 15,
 );
@@ -15,9 +15,9 @@ var titleDecoration = InputDecoration(
 
 var bodyStyle = TextStyle(
   color: Colors.black,
-  fontWeight: FontWeight.w500,
+  // fontWeight: FontWeight.w500,
   fontSize: 14,
-  // fontFamily: 'Open Sans'
+  fontFamily: 'Open Sans'
 );
 
 var bodyDecoration = InputDecoration(

@@ -27,7 +27,6 @@ class _NotaPageState extends State<NotaPage> {
         key: formKey,
         child: Scaffold(
           appBar: AppBar(
-            //! apenas título e botão voltar
             title: TextField(
               style: titleStyle,
               decoration: titleDecoration,
@@ -51,7 +50,6 @@ class _NotaPageState extends State<NotaPage> {
           ),
           bottomSheet: Observer(
             builder: (_) => BottomAppBar(
-              // * botao ADD + Data ultiam edit ao centro + botao salvar ao final
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[

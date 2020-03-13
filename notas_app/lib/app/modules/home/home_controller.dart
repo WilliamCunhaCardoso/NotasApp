@@ -12,4 +12,9 @@ abstract class _HomeControllerBase with Store {
   void changeEditMode() {
     editMode ? editMode = false : editMode = true;
   }
+
+  //todo create delete list
+  // void checkNote(){
+    
+  // }
 }

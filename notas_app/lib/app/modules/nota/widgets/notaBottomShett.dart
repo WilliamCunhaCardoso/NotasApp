@@ -43,6 +43,7 @@ class _NotaBottomSheetWidgetState extends State<NotaBottomSheetWidget> {
                     id: null,
                     titulo: notaController.tituloController.text,
                     ultimaAlteracao: notaController.ultimaAlteracao,
+                    checked: false,
                   ),
                 );
                 notaController.cleanControllers();

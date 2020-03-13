@@ -38,10 +38,10 @@ class HomeBodyWidget extends StatelessWidget {
                     style: listTileSubtitle,
                   ),
                   trailing: homeController.editMode
-                      ? FlatButton(
-                          onPressed: () => db.notaDAO.rmNota(nota[index]),
-                          child: Icon(Icons.delete_outline),
-                        )
+                      ? Checkbox(
+                          value: nota[index].checked,
+                          onChanged: (value) => db.notaDAO
+                              .upNota(nota[index].copyWith(checked: value)))
                       : null,
                 ),
               ),

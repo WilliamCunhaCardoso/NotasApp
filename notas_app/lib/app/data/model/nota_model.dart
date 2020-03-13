@@ -5,4 +5,5 @@ class Notas extends Table {
   DateTimeColumn get ultimaAlteracao => dateTime()();
   TextColumn get titulo => text().withLength(min: 1, max: 15)();
   TextColumn get conteudo => text().named('body')();
+  BoolColumn get checked => boolean().withDefault(Constant(false))();
 }

@@ -27,7 +27,7 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
           actions: <Widget>[
             FlatButton(
                 child: Icon(Icons.mode_edit),
-                onPressed: () => homeController.changeEditMode())
+                onPressed: () => db.notaDAO.deleteNotas)
           ],
         ),
         body: HomeBodyWidget(),

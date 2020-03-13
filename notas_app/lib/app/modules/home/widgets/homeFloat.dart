@@ -13,6 +13,7 @@ class HomeFloatButtonWidget extends StatelessWidget {
     var childUnicornButtons = List<UnicornButton>();
 
     //* Lista de Botões
+    //* Botão de adicionar nota
     childUnicornButtons.add(
       UnicornButton(
         currentButton: FloatingActionButton(
@@ -25,13 +26,14 @@ class HomeFloatButtonWidget extends StatelessWidget {
       ),
     );
 
+    //* Botão de editar nota
     childUnicornButtons.add(
       UnicornButton(
         currentButton: FloatingActionButton(
           heroTag: 'edit note',
           tooltip: 'Editar notas',
           child: Icon(Icons.edit),
-          onPressed: () => print('edit mode'),
+          onPressed: () => homeController.changeEditMode(),
           mini: true,
         ),
       ),

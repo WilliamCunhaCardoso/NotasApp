@@ -12,17 +12,20 @@ class Nota extends DataClass implements Insertable<Nota> {
   final DateTime ultimaAlteracao;
   final String titulo;
   final String conteudo;
+  final bool checked;
   Nota(
       {@required this.id,
       @required this.ultimaAlteracao,
       @required this.titulo,
-      @required this.conteudo});
+      @required this.conteudo,
+      @required this.checked});
   factory Nota.fromData(Map<String, dynamic> data, GeneratedDatabase db,
       {String prefix}) {
     final effectivePrefix = prefix ?? '';
     final intType = db.typeSystem.forDartType<int>();
     final dateTimeType = db.typeSystem.forDartType<DateTime>();
     final stringType = db.typeSystem.forDartType<String>();
+    final boolType = db.typeSystem.forDartType<bool>();
     return Nota(
       id: intType.mapFromDatabaseResponse(data['${effectivePrefix}id']),
       ultimaAlteracao: dateTimeType
@@ -31,6 +34,8 @@ class Nota extends DataClass implements Insertable<Nota> {
           stringType.mapFromDatabaseResponse(data['${effectivePrefix}titulo']),
       conteudo:
           stringType.mapFromDatabaseResponse(data['${effectivePrefix}body']),
+      checked:
+          boolType.mapFromDatabaseResponse(data['${effectivePrefix}checked']),
     );
   }
   factory Nota.fromJson(Map<String, dynamic> json,
@@ -41,6 +46,7 @@ class Nota extends DataClass implements Insertable<Nota> {
       ultimaAlteracao: serializer.fromJson<DateTime>(json['ultimaAlteracao']),
       titulo: serializer.fromJson<String>(json['titulo']),
       conteudo: serializer.fromJson<String>(json['conteudo']),
+      checked: serializer.fromJson<bool>(json['checked']),
     );
   }
   @override
@@ -51,6 +57,7 @@ class Nota extends DataClass implements Insertable<Nota> {
       'ultimaAlteracao': serializer.toJson<DateTime>(ultimaAlteracao),
       'titulo': serializer.toJson<String>(titulo),
       'conteudo': serializer.toJson<String>(conteudo),
+      'checked': serializer.toJson<bool>(checked),
     };
   }
 
@@ -66,16 +73,24 @@ class Nota extends DataClass implements Insertable<Nota> {
       conteudo: conteudo == null && nullToAbsent
           ? const Value.absent()
           : Value(conteudo),
+      checked: checked == null && nullToAbsent
+          ? const Value.absent()
+          : Value(checked),
     );
   }
 
   Nota copyWith(
-          {int id, DateTime ultimaAlteracao, String titulo, String conteudo}) =>
+          {int id,
+          DateTime ultimaAlteracao,
+          String titulo,
+          String conteudo,
+          bool checked}) =>
       Nota(
         id: id ?? this.id,
         ultimaAlteracao: ultimaAlteracao ?? this.ultimaAlteracao,
         titulo: titulo ?? this.titulo,
         conteudo: conteudo ?? this.conteudo,
+        checked: checked ?? this.checked,
       );
   @override
   String toString() {
@@ -83,7 +98,8 @@ class Nota extends DataClass implements Insertable<Nota> {
           ..write('id: $id, ')
           ..write('ultimaAlteracao: $ultimaAlteracao, ')
           ..write('titulo: $titulo, ')
-          ..write('conteudo: $conteudo')
+          ..write('conteudo: $conteudo, ')
+          ..write('checked: $checked')
           ..write(')'))
         .toString();
   }
@@ -92,7 +108,7 @@ class Nota extends DataClass implements Insertable<Nota> {
   int get hashCode => $mrjf($mrjc(
       id.hashCode,
       $mrjc(ultimaAlteracao.hashCode,
-          $mrjc(titulo.hashCode, conteudo.hashCode))));
+          $mrjc(titulo.hashCode, $mrjc(conteudo.hashCode, checked.hashCode)))));
   @override
   bool operator ==(dynamic other) =>
       identical(this, other) ||
@@ -100,7 +116,8 @@ class Nota extends DataClass implements Insertable<Nota> {
           other.id == this.id &&
           other.ultimaAlteracao == this.ultimaAlteracao &&
           other.titulo == this.titulo &&
-          other.conteudo == this.conteudo);
+          other.conteudo == this.conteudo &&
+          other.checked == this.checked);
 }
 
 class NotasCompanion extends UpdateCompanion<Nota> {
@@ -108,17 +125,20 @@ class NotasCompanion extends UpdateCompanion<Nota> {
   final Value<DateTime> ultimaAlteracao;
   final Value<String> titulo;
   final Value<String> conteudo;
+  final Value<bool> checked;
   const NotasCompanion({
     this.id = const Value.absent(),
     this.ultimaAlteracao = const Value.absent(),
     this.titulo = const Value.absent(),
     this.conteudo = const Value.absent(),
+    this.checked = const Value.absent(),
   });
   NotasCompanion.insert({
     this.id = const Value.absent(),
     @required DateTime ultimaAlteracao,
     @required String titulo,
     @required String conteudo,
+    this.checked = const Value.absent(),
   })  : ultimaAlteracao = Value(ultimaAlteracao),
         titulo = Value(titulo),
         conteudo = Value(conteudo);
@@ -126,12 +146,14 @@ class NotasCompanion extends UpdateCompanion<Nota> {
       {Value<int> id,
       Value<DateTime> ultimaAlteracao,
       Value<String> titulo,
-      Value<String> conteudo}) {
+      Value<String> conteudo,
+      Value<bool> checked}) {
     return NotasCompanion(
       id: id ?? this.id,
       ultimaAlteracao: ultimaAlteracao ?? this.ultimaAlteracao,
       titulo: titulo ?? this.titulo,
       conteudo: conteudo ?? this.conteudo,
+      checked: checked ?? this.checked,
     );
   }
 }
@@ -184,8 +206,18 @@ class $NotasTable extends Notas with TableInfo<$NotasTable, Nota> {
     );
   }
 
+  final VerificationMeta _checkedMeta = const VerificationMeta('checked');
+  GeneratedBoolColumn _checked;
   @override
-  List<GeneratedColumn> get $columns => [id, ultimaAlteracao, titulo, conteudo];
+  GeneratedBoolColumn get checked => _checked ??= _constructChecked();
+  GeneratedBoolColumn _constructChecked() {
+    return GeneratedBoolColumn('checked', $tableName, false,
+        defaultValue: Constant(false));
+  }
+
+  @override
+  List<GeneratedColumn> get $columns =>
+      [id, ultimaAlteracao, titulo, conteudo, checked];
   @override
   $NotasTable get asDslTable => this;
   @override
@@ -219,6 +251,10 @@ class $NotasTable extends Notas with TableInfo<$NotasTable, Nota> {
     } else if (isInserting) {
       context.missing(_conteudoMeta);
     }
+    if (d.checked.present) {
+      context.handle(_checkedMeta,
+          checked.isAcceptableValue(d.checked.value, _checkedMeta));
+    }
     return context;
   }
 
@@ -245,6 +281,9 @@ class $NotasTable extends Notas with TableInfo<$NotasTable, Nota> {
     }
     if (d.conteudo.present) {
       map['body'] = Variable<String, StringType>(d.conteudo.value);
+    }
+    if (d.checked.present) {
+      map['checked'] = Variable<bool, BoolType>(d.checked.value);
     }
     return map;
   }

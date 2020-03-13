@@ -16,6 +16,7 @@ class HomeFloatButtonWidget extends StatelessWidget {
     childUnicornButtons.add(
       UnicornButton(
         currentButton: FloatingActionButton(
+          heroTag: 'add note',
           tooltip: 'Adicionar nota',
           child: Icon(Icons.add),
           onPressed: () => Modular.to.pushNamed('/nota'),
@@ -27,6 +28,7 @@ class HomeFloatButtonWidget extends StatelessWidget {
     childUnicornButtons.add(
       UnicornButton(
         currentButton: FloatingActionButton(
+          heroTag: 'edit note',
           tooltip: 'Editar notas',
           child: Icon(Icons.edit),
           onPressed: () => print('edit mode'),

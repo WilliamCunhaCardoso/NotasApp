@@ -41,8 +41,6 @@ class HomeFloatButtonWidget extends StatelessWidget {
 
     //* retorno do widget
     return UnicornDialer(
-      parentButton: Icon(Icons.menu),
-      childButtons: childUnicornButtons,
-    );
+        parentButton: Icon(Icons.menu), childButtons: childUnicornButtons);
   }
 }

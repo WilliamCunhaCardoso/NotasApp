@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'widgets/notaBodyWidget.dart';
-import 'widgets/notaBottomShett.dart';
+import 'widgets/notaBottomSheet.dart';
 import 'widgets/notaTitleWidget.dart';
 
 class NotaPage extends StatefulWidget {

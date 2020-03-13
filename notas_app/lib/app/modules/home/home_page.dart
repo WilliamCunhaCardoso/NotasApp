@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:notas_app/app/data/db/mydatabase.dart';
+import 'package:notas_app/app/modules/home/widgets/notaBottomSheetWidget.dart';
 import 'package:notas_app/app/shared/constants/homeConstants.dart';
 import 'home_controller.dart';
 import 'widgets/homeBodyWidget.dart';
@@ -22,15 +23,10 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text('FluNote', style: appBarStyle),
-          centerTitle: true,
-          actions: <Widget>[
-            FlatButton(
-                child: Icon(Icons.mode_edit),
-                onPressed: () => db.notaDAO.deleteNotas)
-          ],
-        ),
+            title: Text('FluNote', style: appBarStyle), centerTitle: true),
         body: HomeBodyWidget(),
-        floatingActionButton: HomeFloatButtonWidget());
+        floatingActionButton: HomeFloatButtonWidget(),
+        bottomSheet: HomeBottomSheetWidget(),
+        );
   }
 }

@@ -46,7 +46,7 @@ class _NotaBottomSheetWidgetState extends State<NotaBottomSheetWidget> {
                   ),
                 );
                 notaController.cleanControllers();
-                Modular.to.pushReplacementNamed('/');
+                Modular.to.pop();
               },
             ),
           ],

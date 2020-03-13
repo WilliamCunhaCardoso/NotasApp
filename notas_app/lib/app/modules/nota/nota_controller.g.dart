@@ -81,16 +81,6 @@ mixin _$NotaController on _NotaBase, Store {
   }
 
   @override
-  TextEditingController titulo(String value) {
-    final _$actionInfo = _$_NotaBaseActionController.startAction();
-    try {
-      return super.titulo(value);
-    } finally {
-      _$_NotaBaseActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
   String toString() {
     final string =
         'tituloController: ${tituloController.toString()},conteudoController: ${conteudoController.toString()},ultimaAlteracao: ${ultimaAlteracao.toString()},formattedDate: ${formattedDate.toString()}';

@@ -12,16 +12,30 @@ abstract class _NotaBase with Store {
   TextEditingController tituloController = TextEditingController();
   @observable
   TextEditingController conteudoController = TextEditingController();
+
   //* Variáveis
   @observable
   DateTime ultimaAlteracao = DateTime.now();
-  @observable
-  String texto;
-  
+
   @action
   void setUltimaAlteracao(DateTime value) => ultimaAlteracao = value;
 
   @computed
   String get formattedDate =>
       DateFormat('dd-MM-yyyy – kk:mm').format(ultimaAlteracao);
+
+  @action
+  TextEditingController titulo(String value) {
+    if (value == null) {
+      tituloController.text = '';
+    } else {
+      tituloController.text = value;
+    }
+    return tituloController;
+  }
+
+  void cleanControllers() {
+    tituloController.text = '';
+    conteudoController.text = '';
+  }
 }

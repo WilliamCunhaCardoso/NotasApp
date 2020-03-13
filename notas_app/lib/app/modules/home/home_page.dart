@@ -13,6 +13,8 @@ class HomePage extends StatefulWidget {
   _HomePageState createState() => _HomePageState();
 }
 
+//todo: mover widgets para pasta widgets
+
 class _HomePageState extends ModularState<HomePage, HomeController> {
   var db = MyDatabase.instance;
   var homeController = Modular.get<HomeController>();

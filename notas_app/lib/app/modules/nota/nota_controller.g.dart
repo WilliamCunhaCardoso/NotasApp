@@ -68,23 +68,6 @@ mixin _$NotaController on _NotaBase, Store {
     }, _$ultimaAlteracaoAtom, name: '${_$ultimaAlteracaoAtom.name}_set');
   }
 
-  final _$textoAtom = Atom(name: '_NotaBase.texto');
-
-  @override
-  String get texto {
-    _$textoAtom.context.enforceReadPolicy(_$textoAtom);
-    _$textoAtom.reportObserved();
-    return super.texto;
-  }
-
-  @override
-  set texto(String value) {
-    _$textoAtom.context.conditionallyRunInAction(() {
-      super.texto = value;
-      _$textoAtom.reportChanged();
-    }, _$textoAtom, name: '${_$textoAtom.name}_set');
-  }
-
   final _$_NotaBaseActionController = ActionController(name: '_NotaBase');
 
   @override
@@ -98,9 +81,19 @@ mixin _$NotaController on _NotaBase, Store {
   }
 
   @override
+  TextEditingController titulo(String value) {
+    final _$actionInfo = _$_NotaBaseActionController.startAction();
+    try {
+      return super.titulo(value);
+    } finally {
+      _$_NotaBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     final string =
-        'tituloController: ${tituloController.toString()},conteudoController: ${conteudoController.toString()},ultimaAlteracao: ${ultimaAlteracao.toString()},texto: ${texto.toString()},formattedDate: ${formattedDate.toString()}';
+        'tituloController: ${tituloController.toString()},conteudoController: ${conteudoController.toString()},ultimaAlteracao: ${ultimaAlteracao.toString()},formattedDate: ${formattedDate.toString()}';
     return '{$string}';
   }
 }

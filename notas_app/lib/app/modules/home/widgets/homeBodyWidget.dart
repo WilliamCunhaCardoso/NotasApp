@@ -29,14 +29,17 @@ class HomeBodyWidget extends StatelessWidget {
               elevation: 4,
               child: Observer(
                 builder: (_) => ListTile(
+                  //* ListTile Title (Título da Nota)
                   title: Text(
                     nota[index].titulo,
                     style: listTileTitle,
                   ),
+                  //* ListTile Subtitle (Conteúdo da Nota)
                   subtitle: Text(
                     nota[index].conteudo,
                     style: listTileSubtitle,
                   ),
+                  //* Checkbox para remover notas marcadas
                   trailing: homeController.editMode
                       ? Checkbox(
                           value: nota[index].checked,

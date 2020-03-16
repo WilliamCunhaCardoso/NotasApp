@@ -11,7 +11,7 @@ var appController = Modular.get<AppController>();
 class HomeFloatButtonWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    //* criando a variável para receber a lista de botoões
+    //* criando a variável para receber a lista de botões
     var childUnicornButtons = List<UnicornButton>();
 
     //* Lista de Botões

@@ -11,12 +11,13 @@ class HomeBottomSheetWidget extends StatelessWidget {
     return Observer(
       builder: (_) => homeController.editMode
           ? Container(
-            color: Colors.black,
-            width: MediaQuery.of(context).size.width,
-            height: 40,
-              child: Text('Edit mode'),
-            )
-          : Container(height: 0,),
+              width: MediaQuery.of(context).size.width,
+              height: 40,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+                child: Text('Edit mode'),
+              ))
+          : Container(height: 0),
     );
   }
 }

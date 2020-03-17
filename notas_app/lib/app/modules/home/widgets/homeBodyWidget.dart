@@ -18,7 +18,7 @@ class HomeBodyWidget extends StatelessWidget {
         List<Nota> nota = snapshot.data;
         //* Verificação de caso não tenha nenhuma nota
         if (!snapshot.hasData)
-          return Container(child: Text('Sem notas!! Adicione uma xD'));
+          return Center(child: CircularProgressIndicator());
         //* Caso tenha notas, a lista é construída
         return ListView.builder(
           padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 8),

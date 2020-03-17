@@ -9,7 +9,8 @@ class NotaEditorPage extends StatefulWidget {
   final String title;
   final Nota nota;
 
-  const NotaEditorPage({Key key, this.title = "Nota", this.nota}) : super(key: key);
+  const NotaEditorPage({Key key, this.title = "Nota", this.nota})
+      : super(key: key);
 
   @override
   _NotaEditorPageState createState() => _NotaEditorPageState();
@@ -19,7 +20,11 @@ class _NotaEditorPageState extends State<NotaEditorPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: NotaTitleWidget(title: widget.nota.titulo)),
+        appBar: AppBar(
+            title: NotaTitleWidget(title: widget.nota.titulo),
+            textTheme: ThemeData().appBarTheme.textTheme,
+            actionsIconTheme: ThemeData().appBarTheme.actionsIconTheme,
+            iconTheme: ThemeData().appBarTheme.iconTheme),
         body: Padding(
             padding: const EdgeInsets.all(8.0),
             child: NotaBodyWidget(conteudo: widget.nota.conteudo)),

@@ -17,7 +17,11 @@ class _NotaPageState extends State<NotaPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: NotaTitleWidget()),
+        appBar: AppBar(
+            title: NotaTitleWidget(),
+            textTheme: ThemeData().appBarTheme.textTheme,
+            actionsIconTheme: ThemeData().appBarTheme.actionsIconTheme,
+            iconTheme: ThemeData().appBarTheme.iconTheme),
         body: Padding(
             padding: const EdgeInsets.all(8.0), child: NotaBodyWidget()),
         bottomSheet: NotaBottomSheetWidget());

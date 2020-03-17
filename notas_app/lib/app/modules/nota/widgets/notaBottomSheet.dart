@@ -9,15 +9,18 @@ import '../nota_controller.dart';
 class NotaBottomSheetWidget extends StatefulWidget {
   final DateTime ultimaAlteracao;
 
-  const NotaBottomSheetWidget({Key key, this.ultimaAlteracao}) : super(key: key);
-  
+  const NotaBottomSheetWidget({Key key, this.ultimaAlteracao})
+      : super(key: key);
+
   @override
   _NotaBottomSheetWidgetState createState() => _NotaBottomSheetWidgetState();
 }
 
 class _NotaBottomSheetWidgetState extends State<NotaBottomSheetWidget> {
+
   var notaController = Modular.get<NotaController>();
   var db = MyDatabase.instance;
+  
   @override
   Widget build(BuildContext context) {
     return Observer(
@@ -26,30 +29,23 @@ class _NotaBottomSheetWidgetState extends State<NotaBottomSheetWidget> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             FlatButton(
-              //todo implement adicionar: lista, link, etc..
-              child: Icon(Icons.add),
-              onPressed: () {},
-            ),
+                //todo implement adicionar: lista, link, etc..
+                child: Icon(Icons.add),
+                onPressed: () {}),
             Expanded(
               flex: 1,
-              child: Text(
-                notaController.formattedDate,
-                style: dataStyle,
-                textAlign: TextAlign.center,
-              ),
+              child: Text(notaController.formattedDate,
+                  style: dataStyle, textAlign: TextAlign.center),
             ),
             FlatButton(
               child: Icon(Icons.check),
               onPressed: () {
-                db.notaDAO.addNota(
-                  Nota(
+                db.notaDAO.addNota(Nota(
                     conteudo: notaController.conteudoController.text,
                     id: null,
                     titulo: notaController.tituloController.text,
                     ultimaAlteracao: notaController.ultimaAlteracao,
-                    checked: false,
-                  ),
-                );
+                    checked: false));
                 notaController.cleanControllers();
                 Modular.to.pop();
               },

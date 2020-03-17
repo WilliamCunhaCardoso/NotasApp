@@ -28,6 +28,7 @@ class _NotaBodyWidgetState extends State<NotaBodyWidget> {
               controller: notaController.conteudoController,
               style: bodyStyle,
               decoration: bodydct(widget.conteudo),
+              maxLines: null,
               onChanged: (_) =>
                   notaController.setUltimaAlteracao(DateTime.now()),
             ),

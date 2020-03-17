@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 
+//* Light Theme
 var lightTheme = ThemeData(
+  //* General Theming
   primaryColor: Color(0xffccbbff),
   accentColor: Color(0xffccbbff),
+  //* Theming AppBar
   appBarTheme: AppBarTheme(
     textTheme: TextTheme(
       title: TextStyle(
@@ -13,13 +16,17 @@ var lightTheme = ThemeData(
       ),
     ),
   ),
+  //* Background keeps default
 );
 
+//* Dark Theme
 var darkTheme = ThemeData(
+  //* General Theming
   brightness: Brightness.dark,
   scaffoldBackgroundColor: Colors.black12,
   primaryColor: Color(0xffccbbff),
   accentColor: Color(0xffccbbff),
+  //* Theming AppBar
   appBarTheme: AppBarTheme(
     color: Colors.black,
     textTheme: TextTheme(
@@ -30,5 +37,7 @@ var darkTheme = ThemeData(
         fontWeight: FontWeight.w700,
       ),
     ),
+    actionsIconTheme: IconThemeData(color: Color(0xffccbbff)),
+    iconTheme: IconThemeData(color: Color(0xffccbbff))
   ),
 );

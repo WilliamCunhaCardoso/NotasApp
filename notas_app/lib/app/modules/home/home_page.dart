@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:notas_app/app/data/db/mydatabase.dart';
-import 'package:notas_app/app/shared/constants/homeConstants.dart';
 //*Controler
 import 'home_controller.dart';
 //* Widgets
@@ -28,7 +27,8 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
     return Observer(
       builder: (_) => Scaffold(
         appBar: AppBar(
-          title: Text('FluNote', style: appBarStyle),
+          textTheme: ThemeData().appBarTheme.textTheme,
+          title: Text('FluNote'),
           centerTitle: true,
           actions: <Widget>[
             //* Caso o modo de edição seja verdadeiro, irá exibir o icone da lixeira e performar a ação de remover as notas marcadas. Caso falso, não irá exibir nenhum icone

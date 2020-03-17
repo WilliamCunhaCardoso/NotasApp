@@ -3,6 +3,16 @@ import 'package:flutter/material.dart';
 var lightTheme = ThemeData(
   primaryColor: Color(0xffccbbff),
   accentColor: Color(0xffccbbff),
+  appBarTheme: AppBarTheme(
+    textTheme: TextTheme(
+      title: TextStyle(
+        color: Colors.black,
+        fontSize: 18,
+        fontFamily: 'Montserrat',
+        fontWeight: FontWeight.w700,
+      ),
+    ),
+  ),
 );
 
 var darkTheme = ThemeData(
@@ -15,6 +25,9 @@ var darkTheme = ThemeData(
     textTheme: TextTheme(
       title: TextStyle(
         color: Color(0xffccbbff),
+        fontSize: 18,
+        fontFamily: 'Montserrat',
+        fontWeight: FontWeight.w700,
       ),
     ),
   ),

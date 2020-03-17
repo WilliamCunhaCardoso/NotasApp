@@ -15,7 +15,7 @@ class HomeBottomSheetWidget extends StatelessWidget {
               height: 40,
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16),
-                child: Text('Edit mode'),
+                child: Text('Remover notas: (X)'),
               ))
           : Container(height: 0),
     );

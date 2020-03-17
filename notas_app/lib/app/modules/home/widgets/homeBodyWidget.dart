@@ -24,7 +24,7 @@ class HomeBodyWidget extends StatelessWidget {
           padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 8),
           itemCount: nota.length,
           itemBuilder: (context, index) => GestureDetector(
-            onTap: () => Modular.to.pushNamed('/open', arguments: nota[index]),
+            onTap: () => Modular.to.pushNamed('/nota/editor', arguments: nota[index]),
             child: Card(
               elevation: 4,
               child: Observer(

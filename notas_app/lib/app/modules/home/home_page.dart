@@ -8,7 +8,6 @@ import 'home_controller.dart';
 //* Widgets
 import 'widgets/homeBodyWidget.dart';
 import 'widgets/homeFloat.dart';
-import 'widgets/notaBottomSheetWidget.dart';
 
 class HomePage extends StatefulWidget {
   final String title;
@@ -27,22 +26,11 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
     return Observer(
       builder: (_) => Scaffold(
         appBar: AppBar(
-          textTheme: ThemeData().appBarTheme.textTheme,
-          title: Text('FluNote'),
-          centerTitle: true,
-          actions: <Widget>[
-            //* Caso o modo de edição seja verdadeiro, irá exibir o icone da lixeira e performar a ação de remover as notas marcadas. Caso falso, não irá exibir nenhum icone
-            homeController.editMode
-                ? FlatButton(
-                    onPressed: () => db.notaDAO.deleteNotas(),
-                    child: Icon(Icons.delete_outline))
-                : Container()
-          ],
-        ),
+            textTheme: ThemeData().appBarTheme.textTheme,
+            title: Text('FluNote'),
+            centerTitle: true),
         body: HomeBodyWidget(),
         floatingActionButton: HomeFloatButtonWidget(),
-        //todo: remover sheet e implantar um botao float que o numero acresce e decresce ao marcar notas para remover, e ao ser tocado performar ação de remover
-        bottomSheet: HomeBottomSheetWidget(),
       ),
     );
   }

@@ -6,6 +6,10 @@ import 'package:notas_app/app/shared/constants/noteStyles.dart';
 import '../nota_controller.dart';
 
 class NotaTitleWidget extends StatefulWidget {
+  final String title;
+
+  const NotaTitleWidget({Key key, this.title}) : super(key: key);
+
   @override
   _NotaTitleWidgetState createState() => _NotaTitleWidgetState();
 }
@@ -19,7 +23,7 @@ class _NotaTitleWidgetState extends State<NotaTitleWidget> {
       builder: (_) => TextField(
         controller: notaController.tituloController,
         style: titleStyle,
-        decoration: titleDecoration,
+        decoration: titledct(widget.title),
         onChanged: (_) => notaController.setUltimaAlteracao(DateTime.now()),
       ),
     );

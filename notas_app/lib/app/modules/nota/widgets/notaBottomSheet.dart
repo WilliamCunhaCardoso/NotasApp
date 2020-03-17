@@ -7,6 +7,10 @@ import 'package:notas_app/app/shared/constants/noteStyles.dart';
 import '../nota_controller.dart';
 
 class NotaBottomSheetWidget extends StatefulWidget {
+  final DateTime ultimaAlteracao;
+
+  const NotaBottomSheetWidget({Key key, this.ultimaAlteracao}) : super(key: key);
+  
   @override
   _NotaBottomSheetWidgetState createState() => _NotaBottomSheetWidgetState();
 }

@@ -15,7 +15,6 @@ class NotaDAO extends DatabaseAccessor<MyDatabase> with _$NotaDAOMixin {
 
   Future deleteNotas() =>
       (delete(notas)..where((t) => t.checked.equals(true))).go();
-  //todo: contador de notas marcadas
 
   NotaDAO(this.db) : super(db);
 }

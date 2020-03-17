@@ -19,9 +19,7 @@ class _NotaPageState extends State<NotaPage> {
     return Scaffold(
         appBar: AppBar(title: NotaTitleWidget()),
         body: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: NotaBodyWidget(),
-        ),
+            padding: const EdgeInsets.all(8.0), child: NotaBodyWidget()),
         bottomSheet: NotaBottomSheetWidget());
   }
 }

@@ -30,9 +30,12 @@ class HomeBodyWidget extends StatelessWidget {
               child: Observer(
                 builder: (_) => ListTile(
                   //* ListTile Title (Título da Nota)
-                  title: Text(
-                    nota[index].titulo,
-                    style: listTileTitle,
+                  title: Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 8.0),
+                    child: Text(
+                      nota[index].titulo,
+                      style: listTileTitle,
+                    ),
                   ),
                   //* ListTile Subtitle (Conteúdo da Nota)
                   subtitle: Text(

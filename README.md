@@ -13,13 +13,13 @@ Um mockup produzido com propósito de estudo
 
 ## Features
 
-- Dark Mode
+### Dark Mode
 ![](gifs/dark_mode.gif)
 
-- Smart UI Components
+### Smart UI Components
 ![](gifs/smart_ui_components.gif)
 
-- Data Persistense
+### Data Persistense
 ![](gifs/data_persistencia.gif)
 
 ## GIF

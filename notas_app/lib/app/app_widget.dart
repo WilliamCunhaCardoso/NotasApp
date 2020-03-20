@@ -12,7 +12,7 @@ class AppWidget extends StatelessWidget {
     return Observer(
       builder: (_) => MaterialApp(
         navigatorKey: Modular.navigatorKey,
-        title: 'Flutter Slidy',
+        title: 'Notas App',
         theme: appController.darkMode ? darkTheme : lightTheme,
         initialRoute: '/',
         onGenerateRoute: Modular.generateRoute,
